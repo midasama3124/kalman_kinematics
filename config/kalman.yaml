@@ -1,0 +1,12 @@
+kalman:
+  frequency: 50     # Hz
+  sim:
+    verbose: True
+    trial: 1     # 3 simulation datasets
+  joints:
+    knee:
+      verbose: True
+    ankle:
+      verbose: False
+    hip:
+      verbose: False

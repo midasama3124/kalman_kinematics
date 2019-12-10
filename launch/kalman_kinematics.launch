@@ -1,0 +1,13 @@
+<launch>
+  <!-- ARGS -->
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+
+  <!-- PARAMS -->
+  <rosparam file="$(find kalman_kinematics)/config/kalman.yaml" />
+
+  <!-- NODES -->
+  <node pkg="kalman_kinematics" name="publish_imu_data" type="publish_imu_data_node.py" output="screen" launch-prefix="$(arg launch_prefix)"/>
+  <node pkg="kalman_kinematics" name="knee_kinematics" type="knee_kinematics_node.py" output="screen" launch-prefix="$(arg launch_prefix)"/>
+</launch>
